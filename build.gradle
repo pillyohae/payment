@@ -30,17 +30,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
-    // spring-security
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
-    // JWT
-    implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
+
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
@@ -65,13 +57,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     //h2
     implementation 'com.h2database:h2'
-    // AWS S3
-    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
     // Encoder
     implementation 'at.favre.lib:bcrypt:0.10.2'
-    // Swagger
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-
 
     testImplementation "org.mockito:mockito-core"
 
@@ -82,11 +69,6 @@ dependencies {
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
-    // spring AI (OpenAI)
-    implementation platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT")
-    implementation 'org.springframework.ai:spring-ai-openai'
-    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
 
     // redission
     implementation 'org.redisson:redisson-spring-boot-starter:3.36.0'
