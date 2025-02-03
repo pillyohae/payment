@@ -1,3 +1,28 @@
 spring:
   application:
-    name: pillyohae
+    name: payment
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  config:
+    import: optional:file:.env[.properties]
+server:
+  port: 3000
+
+rabbitmq:
+  queue:
+    name: order1
+  exchange:
+    name: exchange.direct
+  routing:
+    key : order
+
+toss:
+  secret-key: ${TOSS_SECRET_KEY}
