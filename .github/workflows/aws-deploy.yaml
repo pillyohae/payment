@@ -84,7 +84,7 @@ jobs:
             echo "$DOCKER_PASS" | sudo docker login -u "$DOCKER_USER" --password-stdin
             sudo docker rm -f server 
             sudo docker pull ${{secrets.DOCKER_HUB_REPOSITORY}}:payment
-            sudo docker run -d \
+            sudo docker run \
                 --name server \
                 -p 8080:8080 ${{secrets.DOCKER_HUB_REPOSITORY}}:payment
         
