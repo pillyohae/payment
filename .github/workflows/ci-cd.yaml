@@ -47,7 +47,7 @@ jobs:
           echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
           
           if [ "${{ github.base_ref }}" = "develop" ]; then
-            DOCKER_TAG="receiver-develop"
+            DOCKER_TAG="paymentDevelop"
           fi
           
           docker build \
