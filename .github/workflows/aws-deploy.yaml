@@ -49,8 +49,8 @@ jobs:
             --build-arg DATABASE_URL="$DATABASE_URL" \
             --build-arg DATABASE_ID="$DATABASE_ID" \
             --build-arg DATABASE_PASSWORD="$DATABASE_PASSWORD" \
-            -t "$DOCKER_HUB_REPOSITORY":paymentMain .
-          docker push "$DOCKER_HUB_REPOSITORY":paymentMain  
+            -t "$DOCKER_HUB_REPOSITORY":payment .
+          docker push "$DOCKER_HUB_REPOSITORY":payment
       
 
       # 6. AWS 인증
@@ -83,7 +83,7 @@ jobs:
           script: |
             echo "$DOCKER_PASS" | sudo docker login -u "$DOCKER_USER" --password-stdin
             sudo docker rm -f server 
-            sudo docker pull ${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain
+            sudo docker pull ${{secrets.DOCKER_HUB_REPOSITORY}}:payment
             sudo docker run -d \
                 --name server \
                 -e TZ=Asia/Seoul \
@@ -103,6 +103,6 @@ jobs:
                 -e RABBITMQ_PASSWORD=${{secrets.RABBITMQ_PASSWORD}} \
                 -e REDIS_HOST=${{secrets.REDIS_HOST}} \
                 -e OPENAI_API_KEY=${{secrets.OPENAI_API_KEY}} \
-                -p 8080:8080 "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain"
+                -p 8080:8080 "${{secrets.DOCKER_HUB_REPOSITORY}}:payment"
         
           
