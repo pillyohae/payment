@@ -75,7 +75,7 @@ jobs:
             echo "$DOCKER_PASS" | sudo docker login -u "$DOCKER_USER" --password-stdin
             sudo docker rm -f server 
             sudo docker pull "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain"
-            sudo docker run -d \
+            sudo docker run \
                 --name server \
                 -e TZ=Asia/Seoul \
                 -e DATABASE_URL=${{secrets.DATABASE_URL}} \
