@@ -91,7 +91,6 @@ jobs:
                 -e AWS_REGION=${{secrets.AWS_REGION}} \
                 -e ACCESS_KEY=${{secrets.AWS_ACCESS_KEY}} \
                 -e SECRET_KEY=${{secrets.AWS_SECRET_ACCESS_KEY}} \
-                -e TOSS_SECRET_KEY=${{secrets.TOSS_SECRET_KEY}} \
                 -p 8080:8080 ${{secrets.DOCKER_HUB_REPOSITORY}}:payment
         
           
