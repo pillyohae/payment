@@ -42,10 +42,6 @@ jobs:
           DATABASE_ID: ${{ secrets.DATABASE_ID }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
           DOCKER_HUB_REPOSITORY: ${{ secrets.DOCKER_HUB_REPOSITORY }}
-#          BUCKET_NAME: ${{secrets.BUCKET_NAME}}
-#          AWS_REGION: ${{secrets.AWS_REGION}}
-#          ACCESS_KEY: ${{secrets.AWS_ACCESS_KEY}}
-#          SECRET_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
         run: |
           echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
@@ -78,7 +74,7 @@ jobs:
           script: |
             echo "$DOCKER_PASS" | sudo docker login -u "$DOCKER_USER" --password-stdin
             sudo docker rm -f server 
-            sudo docker pull "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain "
+            sudo docker pull "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain"
             sudo docker run -d \
                 --name server \
                 -e TZ=Asia/Seoul \
@@ -90,6 +86,6 @@ jobs:
                 -e RABBITMQ_PORT=${{secrets.RABBITMQ_PORT}} \
                 -e RABBITMQ_USERNAME=${{secrets.RABBITMQ_USERNAME}} \
                 -e RABBITMQ_PASSWORD=${{secrets.RABBITMQ_PASSWORD}} \
-                -p 8080:8080 "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain "
+                -p 8080:8080 "${{secrets.DOCKER_HUB_REPOSITORY}}:paymentMain"
         
           
